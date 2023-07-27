@@ -4,8 +4,9 @@ const main = async () => {
     const planFile = core.getInput("plan_file", {}) ||
         core.getInput("plan-file", { required: true });
     console.log(`Loading plan file ${planFile} at ${process.cwd()}`);
+    const tsconfig = core.getInput("tsconfig") || undefined;
     const plan = core.getInput("plan", { required: true });
-    const computedMatrix = await evalPlan({ planFile, plan });
+    const computedMatrix = await evalPlan({ planFile, plan, tsconfig });
     core.setOutput("matrix", computedMatrix);
 };
 const handleError = (error) => {

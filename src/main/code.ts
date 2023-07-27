@@ -5,9 +5,19 @@ import { readFileSync } from "fs";
 import nodeModule from "module";
 import root from "../common/root.js";
 
-export const createCompiler = (_rootFile: string): Service =>
-  create({
-    project: path.resolve(root, "tsconfig.runtime.json"),
+export type CreateCompilerParams = {
+  rootFile: string;
+  tsconfig: string | undefined;
+};
+
+export const createCompiler = (params: CreateCompilerParams): Service => {
+  const {
+    rootFile: _,
+    tsconfig = path.resolve(root, "tsconfig.runtime.json"),
+  } = params;
+
+  return create({
+    project: tsconfig,
     esm: true,
 
     compilerOptions: {
@@ -19,6 +29,7 @@ export const createCompiler = (_rootFile: string): Service =>
       moduleResolution: "Bundler",
     },
   });
+};
 
 export const compileCode = (
   code: string,

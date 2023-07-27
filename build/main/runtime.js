@@ -1,7 +1,10 @@
 import { createCompiler, importModule } from "./code.js";
 export const evalPlan = async (params) => {
-    const { planFile, plan } = params;
-    const service = createCompiler(planFile);
+    const { planFile, plan, tsconfig } = params;
+    const service = createCompiler({
+        rootFile: planFile,
+        tsconfig,
+    });
     const { exports: moduleExports } = await importModule(planFile, service, {});
     if (typeof moduleExports !== "object" || moduleExports == null) {
         throw new Error("Invalid default export, must be a map of plans");

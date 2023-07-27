@@ -4,18 +4,21 @@ import path from "path";
 import { readFileSync } from "fs";
 import nodeModule from "module";
 import root from "../common/root.js";
-export const createCompiler = (_rootFile) => create({
-    project: path.resolve(root, "tsconfig.runtime.json"),
-    esm: true,
-    compilerOptions: {
-        // The way we interact with the file requires that it is built as
-        // a NodeNext module. This can be changed as long as we can load and run
-        // the file.
-        module: "NodeNext",
-        // To allow loading files without an extension.
-        moduleResolution: "Bundler",
-    },
-});
+export const createCompiler = (params) => {
+    const { rootFile: _, tsconfig = path.resolve(root, "tsconfig.runtime.json"), } = params;
+    return create({
+        project: tsconfig,
+        esm: true,
+        compilerOptions: {
+            // The way we interact with the file requires that it is built as
+            // a NodeNext module. This can be changed as long as we can load and run
+            // the file.
+            module: "NodeNext",
+            // To allow loading files without an extension.
+            moduleResolution: "Bundler",
+        },
+    });
+};
 export const compileCode = (code, file, service) => {
     const logRawCode = process.env["LOG_RAW_CODE"];
     if (Boolean(logRawCode)) {

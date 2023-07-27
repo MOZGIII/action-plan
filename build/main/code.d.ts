@@ -1,5 +1,9 @@
 import { Service } from "ts-node";
-export declare const createCompiler: (_rootFile: string) => Service;
+export type CreateCompilerParams = {
+    rootFile: string;
+    tsconfig: string | undefined;
+};
+export declare const createCompiler: (params: CreateCompilerParams) => Service;
 export declare const compileCode: (code: string, file: string, service: Service) => string;
 export type ImportedModule = {
     exports: {

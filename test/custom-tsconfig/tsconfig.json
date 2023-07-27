@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Custom",
+  "extends": "../../tsconfig.runtime.json",
+  "compilerOptions": {
+    "noUnusedLocals": false
+  },
+  "include": ["plan.ts"]
+}

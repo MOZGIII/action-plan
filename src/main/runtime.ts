@@ -4,14 +4,18 @@ import { createCompiler, importModule } from "./code.js";
 export type EvalPlanParams = {
   planFile: string;
   plan: string;
+  tsconfig: string | undefined;
 };
 
 export const evalPlan = async (
   params: EvalPlanParams,
 ): Promise<Matrix | any> => {
-  const { planFile, plan } = params;
+  const { planFile, plan, tsconfig } = params;
 
-  const service = createCompiler(planFile);
+  const service = createCompiler({
+    rootFile: planFile,
+    tsconfig,
+  });
 
   const { exports: moduleExports } = await importModule(planFile, service, {});
 

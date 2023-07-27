@@ -8,6 +8,9 @@ inputs:
     description: The name of the plan to generate.
     required: false
     default: default
+  tsconfig:
+    description: The custom TypeScript config.
+    required: false
 outputs:
   matrix:
     description: "The generated matrix."
