@@ -1,5 +1,13 @@
-name: "Action Plan"
+name: "Action Plan (matrix)"
 description: "Generate Github Actions matrix."
+inputs:
+  plan-file:
+    description: The TypeScript file to load and run for plan generation.
+    required: true
+  plan:
+    description: The name of the plan to generate.
+    required: false
+    default: default
 outputs:
   matrix:
     description: "The generated matrix."
