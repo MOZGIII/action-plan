@@ -1,11 +1,13 @@
 import core from "@actions/core";
 import { evalPlan } from "./runtime.js";
+import { resolveWorkspacePath } from "./action.js";
 const main = async () => {
     const planFile = core.getInput("plan_file", {}) ||
         core.getInput("plan-file", { required: true });
     console.log(`Loading plan file ${planFile}`);
     const plan = core.getInput("plan", { required: true });
-    const computedMatrix = await evalPlan({ planFile, plan });
+    const resolvedPlanFile = resolveWorkspacePath(planFile);
+    const computedMatrix = await evalPlan({ planFile: resolvedPlanFile, plan });
     core.setOutput("matrix", computedMatrix);
 };
 const handleError = (error) => {

@@ -1,5 +1,6 @@
 import core from "@actions/core";
 import { evalPlan } from "./runtime.js";
+import { resolveWorkspacePath } from "./action.js";
 
 const main = async () => {
   const planFile =
@@ -9,7 +10,9 @@ const main = async () => {
 
   const plan = core.getInput("plan", { required: true });
 
-  const computedMatrix = await evalPlan({ planFile, plan });
+  const resolvedPlanFile = resolveWorkspacePath(planFile);
+
+  const computedMatrix = await evalPlan({ planFile: resolvedPlanFile, plan });
 
   core.setOutput("matrix", computedMatrix);
 };
