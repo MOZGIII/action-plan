@@ -1,0 +1,36 @@
+name: self-test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  plan:
+    name: self-test / plan
+    runs-on: ubuntu-latest
+
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: ./.
+        id: plan
+        with:
+          plan-file: .github/action-plan.ts
+
+  action:
+    needs:
+      - plan
+    strategy:
+      matrix: ${{ fromJson(needs.plan.outputs.matrix) }}
+      fail-fast: false
+    name: self-test / ${{ matrix.commands.name }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: ${{ matrix.commands.command }}
