@@ -3,8 +3,8 @@
   "display": "Build",
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "module": "NodeNext",
-    "outDir": "build"
+    "target": "es2015",
+    "moduleResolution": "node"
   },
   "include": ["src"]
 }

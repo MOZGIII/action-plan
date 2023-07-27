@@ -1,0 +1,3 @@
+declare const _default: "hello world";
+export default _default;
+//# sourceMappingURL=api.d.ts.map

@@ -6,8 +6,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "try": "tsc && node build/main/index.js",
-    "build": "tsc",
+    "try": "yarn build && node build/main/index.js",
+    "build": "ncc build src/main/index.ts -o build/main",
     "build:integrity-check": "yarn build && bin/check-build-integrity",
     "test": "bin/test",
     "prettier:fix": "prettier -w .",
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@types/node": "^16.18.39",
+    "@vercel/ncc": "^0.36.1",
     "prettier": "^3.0.0",
     "typescript": "^5.1.6"
   },
