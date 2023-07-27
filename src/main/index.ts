@@ -1,7 +1,10 @@
 import core from "@actions/core";
 import { evalPlan } from "./runtime.js";
+import { ensurePackagesInstalled } from "./yarn.js";
 
 const main = async () => {
+  await ensurePackagesInstalled();
+
   const planFile =
     core.getInput("plan_file", {}) ||
     core.getInput("plan-file", { required: true });
