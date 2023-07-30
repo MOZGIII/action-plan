@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: ./.github/actions/action-plan
+      - uses: ./.
         id: plan
         with:
           plan-file: .github/action-plan.ts
