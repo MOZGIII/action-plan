@@ -1,5 +1,5 @@
 import path from "path";
-import { Matrix } from "../common/types.js";
+import { Matrix } from "@action-plan/core";
 
 export type EvalPlanParams = {
   planFile: string;

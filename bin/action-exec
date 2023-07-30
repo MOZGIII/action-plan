@@ -14,5 +14,5 @@ exec yarn \
   --cwd "$CURRENT_PWD" \
   ts-node-esm \
   --project "$INPUT_TSCONFIG" \
-  "$ACTION_PATH/build/main/index.js" \
+  "$ACTION_PATH/build/index.js" \
   "$@"

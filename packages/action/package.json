@@ -1,0 +1,21 @@
+{
+  "name": "@action-plan/action",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "build/main/index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "try": "tsc && cd \"$PROJECT_CWD\" && bin/action-exec",
+    "build": "rm -rf ../../build && tsc",
+    "build:integrity-check": "yarn build && cd \"$PROJECT_CWD\" && bin/check-build-integrity",
+    "test": "cd \"$PROJECT_CWD\" && bin/test"
+  },
+  "dependencies": {
+    "@action-plan/core": "workspace:*",
+    "@actions/core": "^1.10.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
