@@ -1,27 +1,16 @@
 {
-  "name": "action-plan",
-  "version": "1.0.0",
-  "type": "module",
-  "main": "build/main/index.js",
-  "license": "MIT",
+  "name": "@action-plan/root",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "try": "tsc && bin/action-exec",
-    "build": "rm -rf build && tsc",
-    "build:integrity-check": "yarn build && bin/check-build-integrity",
     "test": "bin/test",
     "prettier:fix": "prettier -w .",
     "prettier:check": "prettier -l ."
   },
-  "dependencies": {
-    "@actions/core": "^1.10.0",
-    "@actions/github": "^5.1.1",
-    "ts-node": "^10.9.1"
-  },
   "devDependencies": {
-    "@types/node": "^16.18.39",
-    "prettier": "^3.0.0",
-    "typescript": "^5.1.6"
+    "prettier": "^2.8.8"
   },
   "packageManager": "yarn@3.6.1"
 }

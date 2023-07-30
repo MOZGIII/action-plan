@@ -1,18 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ACTION_PATH="${ACTION_PATH:?set ACTION_PATH to the desired path}"
-INPUT_TSCONFIG="${INPUT_TSCONFIG:-"$ACTION_PATH/tsconfig.runtime.json"}"
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
-CURRENT_PWD="$(pwd)"
+YARN_EXECUTABLES=("$SCRIPT_DIR/../.yarn/releases"/*)
+YARN_EXECUTABLE="${YARN_EXECUTABLES[0]}"
 
-printf 'Using tsconfig file: %s\n' "$INPUT_TSCONFIG"
-
-cd "$ACTION_PATH"
-exec yarn \
-  "$ACTION_PATH" \
-  --cwd "$CURRENT_PWD" \
-  ts-node-esm \
-  --project "$INPUT_TSCONFIG" \
-  "$ACTION_PATH/build/main/index.js" \
-  "$@"
+exec "$YARN_EXECUTABLE" "$SCRIPT_DIR/.." action:exec "$@"

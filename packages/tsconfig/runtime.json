@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Runtime",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "allowJs": true,
+    "module": "NodeNext",
+    "moduleResolution": "Bundler"
+  },
+  "ts-node": {
+    "moduleTypes": {
+      // Treat all local files as esm.
+      "/**/*": "esm",
+      "./**/*": "esm"
+    }
+  }
+}

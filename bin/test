@@ -1,16 +1,20 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+
 test() {
   local PLAN_FILE="$1"
   local PLAN="$2"
+
+  printf '\n==> Test %s\n\n' "$PLAN_FILE"
 
   (
     export ACTION_PATH="./."
     export INPUT_PLAN_FILE="$PLAN_FILE"
     export INPUT_PLAN="$PLAN"
 
-    yarn try
+    "$SCRIPT_DIR/action-exec"
   )
 }
 
@@ -21,5 +25,5 @@ test "./test/import-packages-with-types/plan.ts" "default"
 test "./test/import-packages-no-types/plan.ts" "default"
 test "./test/js/plan.js" "default"
 
-! test "test/custom-tsconfig/plan.ts" "default"                                                 # causes an error
-INPUT_TSCONFIG=test/custom-tsconfig/tsconfig.json test "test/custom-tsconfig/plan.ts" "default" # no error
+! test "./test/custom-tsconfig/plan.ts" "default"                                                 # causes an error
+INPUT_TSCONFIG=test/custom-tsconfig/tsconfig.json test "./test/custom-tsconfig/plan.ts" "default" # no error

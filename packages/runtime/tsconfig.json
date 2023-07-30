@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "packages/runtime",
+  "extends": "@action-plan/tsconfig/build.json",
+  "include": ["src"]
+}

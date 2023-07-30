@@ -1,0 +1,16 @@
+{
+  "name": "@action-plan/exec",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "action:exec": "bin/action-exec"
+  },
+  "dependencies": {
+    "@action-plan/action": "workspace:*",
+    "@types/node": "^16.18.39",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  }
+}

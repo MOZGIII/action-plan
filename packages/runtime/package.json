@@ -1,0 +1,15 @@
+{
+  "name": "@action-plan/runtime",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "private": true,
+  "main": "src/index.ts",
+  "dependencies": {
+    "@action-plan/core": "workspace:*",
+    "@types/node": "^16.18.39"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
