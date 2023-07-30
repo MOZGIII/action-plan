@@ -6,20 +6,20 @@ test() {
   local PLAN="$2"
 
   (
+    export ACTION_PATH="./."
     export INPUT_PLAN_FILE="$PLAN_FILE"
     export INPUT_PLAN="$PLAN"
-    export INPUT_TSCONFIG
 
     yarn try
   )
 }
 
-test "test/simple-default/plan.ts" "default"
-test "test/simple-non-default/plan.ts" "test"
-test "test/multi-file/plan.ts" "default"
-test "test/import-packages-with-types/plan.ts" "default"
-test "test/import-packages-no-types/plan.ts" "default"
-test "test/js/plan.js" "default"
+test "./test/simple-default/plan.ts" "default"
+test "./test/simple-non-default/plan.ts" "test"
+test "./test/multi-file/plan.ts" "default"
+test "./test/import-packages-with-types/plan.ts" "default"
+test "./test/import-packages-no-types/plan.ts" "default"
+test "./test/js/plan.js" "default"
 
 ! test "test/custom-tsconfig/plan.ts" "default"                                                 # causes an error
 INPUT_TSCONFIG=test/custom-tsconfig/tsconfig.json test "test/custom-tsconfig/plan.ts" "default" # no error

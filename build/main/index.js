@@ -1,15 +1,17 @@
 import core from "@actions/core";
 import { evalPlan } from "./runtime.js";
-const main = async () => {
-    const planFile = core.getInput("plan_file", {}) ||
-        core.getInput("plan-file", { required: true });
-    console.log(`Loading plan file ${planFile} at ${process.cwd()}`);
-    const tsconfig = core.getInput("tsconfig") || undefined;
-    if (tsconfig) {
-        console.log(`Using custom tsconfig ${tsconfig}`);
+const input = (key) => {
+    const val = process.env[key];
+    if (val === undefined) {
+        throw new Error(`Input parameter required but was not provided: {key}`);
     }
+    return val;
+};
+const main = async () => {
+    const planFile = input("INPUT_PLAN_FILE");
+    console.log(`Loading plan file ${planFile} at ${process.cwd()}`);
     const plan = core.getInput("plan", { required: true });
-    const computedMatrix = await evalPlan({ planFile, plan, tsconfig });
+    const computedMatrix = await evalPlan({ planFile, plan });
     core.setOutput("matrix", computedMatrix);
 };
 const handleError = (error) => {
