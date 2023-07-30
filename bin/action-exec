@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ACTION_PATH="${ACTION_PATH:?set ACTION_PATH to the desired path}"
+INPUT_TSCONFIG="${INPUT_TSCONFIG:-"$ACTION_PATH/tsconfig.runtime.json"}"
+
+exec yarn "$ACTION_PATH" ts-node-esm --project "$INPUT_TSCONFIG" "$ACTION_PATH/build/main/index.js" "$@"

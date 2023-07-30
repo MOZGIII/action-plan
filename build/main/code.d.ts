@@ -1,6 +1,5 @@
 import { Service } from "ts-node";
 export type CreateCompilerParams = {
-    rootFile: string;
     tsconfig: string | undefined;
 };
 export declare const createCompiler: (params: CreateCompilerParams) => Service;

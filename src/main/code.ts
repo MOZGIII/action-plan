@@ -6,15 +6,11 @@ import nodeModule from "module";
 import root from "../common/root.js";
 
 export type CreateCompilerParams = {
-  rootFile: string;
   tsconfig: string | undefined;
 };
 
 export const createCompiler = (params: CreateCompilerParams): Service => {
-  const {
-    rootFile: _,
-    tsconfig = path.resolve(root, "tsconfig.runtime.json"),
-  } = params;
+  const { tsconfig = path.resolve(root, "tsconfig.runtime.json") } = params;
 
   return create({
     project: tsconfig,
