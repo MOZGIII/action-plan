@@ -5,6 +5,15 @@
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "noEmit": true,
-    "allowJs": true
+    "allowJs": true,
+    "module": "NodeNext",
+    "moduleResolution": "Bundler"
+  },
+  "ts-node": {
+    "moduleTypes": {
+      // Treat all local files as esm.
+      "/**/*": "esm",
+      "./**/*": "esm"
+    }
   }
 }
