@@ -4,7 +4,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "module": "NodeNext",
-    "outDir": "../../build"
+    "outDir": "build"
   },
   "include": ["src"]
 }

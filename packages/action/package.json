@@ -6,16 +6,16 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "try": "tsc && cd \"$PROJECT_CWD\" && bin/action-exec",
+    "try": "tsc && bin/action-exec",
     "build": "rm -rf ../../build && tsc",
-    "build:integrity-check": "yarn build && cd \"$PROJECT_CWD\" && bin/check-build-integrity",
-    "test": "cd \"$PROJECT_CWD\" && bin/test"
+    "build:integrity-check": "yarn build && bin/check-build-integrity",
+    "test": "bin/test"
   },
   "dependencies": {
     "@action-plan/core": "workspace:*",
-    "@actions/core": "^1.10.0"
-  },
-  "devDependencies": {
+    "@actions/core": "^1.10.0",
+    "@types/node": "^16.18.39",
+    "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   }
 }
