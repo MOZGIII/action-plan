@@ -1,5 +1,5 @@
-const platform = await require("./platform");
-const mode = await require("./mode");
+import platform from "./platform.ts";
+import mode from "./mode.ts";
 
 console.log("plan:yes");
 
