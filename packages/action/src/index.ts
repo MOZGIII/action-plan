@@ -1,5 +1,5 @@
 import core from "@actions/core";
-import { evalPlan } from "./runtime.js";
+import { evalPlan } from "@action-plan/runtime";
 
 const input = <const Key extends string>(key: Key): string => {
   const val = process.env[key];

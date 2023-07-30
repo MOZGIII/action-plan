@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+
+YARN_EXECUTABLES=("$SCRIPT_DIR/../.yarn/releases"/*)
+YARN_EXECUTABLE="${YARN_EXECUTABLES[0]}"
+
+exec "$YARN_EXECUTABLE" "$SCRIPT_DIR/.." action:exec "$@"

@@ -21,7 +21,7 @@ runs:
     - run: yarn install --immutable --immutable-cache
       shell: bash
       working-directory: ${{ github.action_path }}
-    - run: "$ACTION_PATH/packages/action/bin/action-exec"
+    - run: "$ACTION_PATH/bin/action-exec"
       shell: bash
       id: execution
       env:

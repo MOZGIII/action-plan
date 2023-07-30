@@ -5,10 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "try": "yarn packages/action try",
-    "build": "yarn packages/action build",
-    "build:integrity-check": "yarn packages/action build:integrity-check",
-    "test": "yarn packages/action test",
+    "test": "bin/test",
     "prettier:fix": "prettier -w .",
     "prettier:check": "prettier -l ."
   },
