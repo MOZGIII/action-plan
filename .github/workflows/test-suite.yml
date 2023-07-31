@@ -1,0 +1,55 @@
+name: test-suite
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        suite:
+          - name: simple-default
+            params:
+              plan-file: ./test/simple-default/plan.ts
+
+          - name: simple-non-default
+            params:
+              plan-file: ./test/simple-non-default/plan.ts
+              plan: test
+
+          - name: multi-file
+            params:
+              plan-file: ./test/multi-file/plan.ts
+
+          - name: custom-tsconfig
+            params:
+              plan-file: ./test/custom-tsconfig/plan.ts
+              tsconfig: ./test/custom-tsconfig/tsconfig.json
+
+          - name: import-packages-no-types
+            params:
+              plan-file: ./test/import-packages-no-types/plan.ts
+
+          - name: import-packages-with-types
+            params:
+              plan-file: ./test/import-packages-with-types/plan.ts
+
+          - name: js
+            params:
+              plan-file: ./test/js/plan.js
+
+      fail-fast: false
+
+    name: test-suite / ${{ matrix.suite.name }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: ./.
+        id: plan
+        with: ${{ matrix.suite.params }}
