@@ -15,6 +15,7 @@ test() {
     --rm -it \
     -e INPUT_PLAN_FILE="$PLAN_FILE" \
     -e INPUT_PLAN="$PLAN" \
+    -e GITHUB_WORKSPACE="/workspace" \
     -v "$SCRIPT_DIR/..:/workspace" \
     --workdir "/workspace" \
     "$ID"
