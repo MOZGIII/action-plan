@@ -15,7 +15,8 @@ test() {
     --rm -it \
     -e INPUT_PLAN_FILE="$PLAN_FILE" \
     -e INPUT_PLAN="$PLAN" \
-    -v "$SCRIPT_DIR/../test:/app/test" \
+    -v "$SCRIPT_DIR/..:/workspace" \
+    --workdir "/workspace" \
     "$ID"
 }
 

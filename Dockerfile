@@ -1,9 +1,7 @@
 FROM node:20
 
-WORKDIR /app
+COPY . /action
 
-COPY . .
+RUN cd /action && yarn install --immutable --immutable-cache
 
-RUN yarn install --immutable --immutable-cache
-
-ENTRYPOINT ["/app/bin/action-exec"]
+ENTRYPOINT ["/action/bin/action-exec"]
