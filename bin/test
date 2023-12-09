@@ -3,19 +3,22 @@ set -euo pipefail
 
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
+ID="$(docker build -q "$SCRIPT_DIR/..")"
+
 test() {
   local PLAN_FILE="$1"
   local PLAN="$2"
 
   printf '\n==> Test %s\n\n' "$PLAN_FILE"
 
-  (
-    export ACTION_PATH="./."
-    export INPUT_PLAN_FILE="$PLAN_FILE"
-    export INPUT_PLAN="$PLAN"
-
-    "$SCRIPT_DIR/action-exec"
-  )
+  docker run \
+    --rm -i \
+    -e INPUT_PLAN_FILE="$PLAN_FILE" \
+    -e INPUT_PLAN="$PLAN" \
+    -e GITHUB_WORKSPACE="/workspace" \
+    -v "$SCRIPT_DIR/..:/workspace" \
+    --workdir "/workspace" \
+    "$ID"
 }
 
 test "./test/simple-default/plan.ts" "default"

@@ -4,14 +4,16 @@ set -euo pipefail
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 EXEC_PATH="$SCRIPT_DIR/.."
 
+if [[ "${WORKDIR:-}" != "" ]]; then
+  cd "$WORKDIR"
+fi
+
 INPUT_TSCONFIG="${INPUT_TSCONFIG:-"$EXEC_PATH/tsconfig.json"}"
 
 printf 'Using tsconfig file: %s\n' "$INPUT_TSCONFIG"
 printf 'Running from dir: %s\n' "$(pwd)"
 
-cd "$INIT_CWD"
-
-exec ts-node-esm \
-  --project "$INPUT_TSCONFIG" \
+exec tsx \
+  --tsconfig "$INPUT_TSCONFIG" \
   "$EXEC_PATH/src/index.ts" \
   "$@"

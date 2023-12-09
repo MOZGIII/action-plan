@@ -6,4 +6,6 @@ SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 YARN_EXECUTABLES=("$SCRIPT_DIR/../.yarn/releases"/*)
 YARN_EXECUTABLE="${YARN_EXECUTABLES[0]}"
 
+export WORKDIR="$PWD"
+
 exec "$YARN_EXECUTABLE" "$SCRIPT_DIR/.." action:exec "$@"
