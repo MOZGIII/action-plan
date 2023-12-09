@@ -14,18 +14,11 @@ inputs:
 outputs:
   matrix:
     description: "The generated matrix."
-    value: ${{ steps.execution.outputs.matrix }}
 runs:
-  using: "composite"
-  steps:
-    - run: yarn install --immutable --immutable-cache
-      shell: bash
-      working-directory: ${{ github.action_path }}
-    - run: "$ACTION_PATH/bin/action-exec"
-      shell: bash
-      id: execution
-      env:
-        ACTION_PATH: ${{ github.action_path }}
-        INPUT_PLAN_FILE: ${{ inputs.plan-file }}
-        INPUT_PLAN: ${{ inputs.plan }}
-        INPUT_TSCONFIG: ${{ inputs.tsconfig }}
+  using: "docker"
+  image: "Dockerfile"
+  env:
+    ACTION_PATH: ${{ github.action_path }}
+    INPUT_PLAN_FILE: ${{ inputs.plan-file }}
+    INPUT_PLAN: ${{ inputs.plan }}
+    INPUT_TSCONFIG: ${{ inputs.tsconfig }}
