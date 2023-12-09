@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Custom",
-  "extends": "@action-plan/exec",
+  "extends": "/action/packages/exec/tsconfig.json",
   "compilerOptions": {
     "noUnusedLocals": false
   },
