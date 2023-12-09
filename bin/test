@@ -12,7 +12,7 @@ test() {
   printf '\n==> Test %s\n\n' "$PLAN_FILE"
 
   docker run \
-    --rm -it \
+    --rm -i \
     -e INPUT_PLAN_FILE="$PLAN_FILE" \
     -e INPUT_PLAN="$PLAN" \
     -e GITHUB_WORKSPACE="/workspace" \
