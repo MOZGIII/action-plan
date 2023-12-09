@@ -9,8 +9,6 @@ INPUT_TSCONFIG="${INPUT_TSCONFIG:-"$EXEC_PATH/tsconfig.json"}"
 printf 'Using tsconfig file: %s\n' "$INPUT_TSCONFIG"
 printf 'Running from dir: %s\n' "$(pwd)"
 
-cd "$INIT_CWD"
-
 exec tsx \
   --tsconfig "$INPUT_TSCONFIG" \
   "$EXEC_PATH/src/index.ts" \
