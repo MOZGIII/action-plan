@@ -11,7 +11,7 @@ printf 'Running from dir: %s\n' "$(pwd)"
 
 cd "$INIT_CWD"
 
-exec ts-node-esm \
-  --project "$INPUT_TSCONFIG" \
+exec tsx \
+  --tsconfig "$INPUT_TSCONFIG" \
   "$EXEC_PATH/src/index.ts" \
   "$@"
