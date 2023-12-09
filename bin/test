@@ -10,7 +10,6 @@ test() {
   printf '\n==> Test %s\n\n' "$PLAN_FILE"
 
   (
-    export ACTION_PATH="./."
     export INPUT_PLAN_FILE="$PLAN_FILE"
     export INPUT_PLAN="$PLAN"
 

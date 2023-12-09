@@ -18,7 +18,6 @@ runs:
   using: "docker"
   image: "Dockerfile"
   env:
-    ACTION_PATH: ${{ github.action_path }}
     INPUT_PLAN_FILE: ${{ inputs.plan-file }}
     INPUT_PLAN: ${{ inputs.plan }}
     INPUT_TSCONFIG: ${{ inputs.tsconfig }}
