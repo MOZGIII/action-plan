@@ -14,6 +14,8 @@
       // Treat all local files as esm.
       "/**/*": "esm",
       "./**/*": "esm"
-    }
+    },
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
   }
 }
