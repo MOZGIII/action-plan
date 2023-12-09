@@ -4,7 +4,7 @@ import { evalPlan } from "@action-plan/runtime";
 const input = <const Key extends string>(key: Key): string => {
   const val = process.env[key];
   if (val === undefined) {
-    throw new Error(`Input parameter required but was not provided: {key}`);
+    throw new Error(`Input parameter required but was not provided: ${key}`);
   }
   return val;
 };
