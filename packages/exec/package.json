@@ -9,8 +9,9 @@
   },
   "dependencies": {
     "@action-plan/action": "workspace:*",
-    "@types/node": "^20.10.4",
-    "tsx": "^4.6.2",
-    "typescript": "^5.3.3"
+    "tsx": "^4.19.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
   }
 }
