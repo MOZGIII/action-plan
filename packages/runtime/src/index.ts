@@ -22,8 +22,13 @@ export const evalPlan = async (
   }
 
   if (typeof planFn !== "function") {
+    let messageDetails = "";
+    try {
+      messageDetails = `: ${JSON.stringify(planFn)}`;
+    } catch {}
+
     throw new Error(
-      `Found plan ${plan} but it is not a function (was ${typeof planFn})`,
+      `Found plan "${plan}" but it is not a function (was "${typeof planFn}"${messageDetails})`
     );
   }
 
