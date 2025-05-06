@@ -28,7 +28,7 @@ export const evalPlan = async (
     } catch {}
 
     throw new Error(
-      `Found plan "${plan}" but it is not a function (was "${typeof planFn}"${messageDetails})`
+      `Found plan "${plan}" but it is not a function (was "${typeof planFn}"${messageDetails})`,
     );
   }
 
