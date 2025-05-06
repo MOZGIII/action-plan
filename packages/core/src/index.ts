@@ -6,4 +6,4 @@ export interface JSONObject {
 
 export interface JSONArray extends Array<JSONValue> {}
 
-export type Matrix = Record<string, JSONValue>;
+export type Matrix = { [name: string]: JSONValue };
