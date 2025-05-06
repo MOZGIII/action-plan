@@ -8,9 +8,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  command:
+    strategy:
+      matrix:
+        mode:
+          - command: prettier:check
+          - command: test
+      fail-fast: false
 
+    name: ${{ matrix.mode.command }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
@@ -20,4 +27,4 @@ jobs:
 
       - run: yarn
 
-      - run: yarn test
+      - run: yarn ${{ matrix.mode.command }}
